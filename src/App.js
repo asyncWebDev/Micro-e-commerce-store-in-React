@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import StoreContent from "./components/Components/MainContent.js/StoreContent";
+import Nav from "./components/Components/MainContent.js/Nav";
+import { CartContextProvider } from "./context/cart-context";
 
 function App() {
+  const [activePage, setActivePage] = useState("main");
+  const loadPageHandler = (page) => {
+    console.log(page);
+    setActivePage(page);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Nav onLoadPage={loadPageHandler} />
+      <CartContextProvider>
+        <StoreContent content={activePage} />
+      </CartContextProvider>
+    </React.Fragment>
   );
 }
 

@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.5rem;
+
+  background-color: var(--dark-blue-color);
+
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.navbar form {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.navbar form input {
+  width: 50%;
+}
+
+.navbar li {
+  align-self: center;
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin-left: 0.2rem;
+}

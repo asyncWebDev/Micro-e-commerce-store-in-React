@@ -1,0 +1,27 @@
+.sidebar {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  font-size: 1rem;
+}
+
+.sidebar-list li {
+  padding: 1rem;
+}
+
+.sidebar-list li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-list li a:hover {
+  cursor: pointer;
+}
+
+.sidebar-transparent {
+  background-color: rgba(255, 0, 0, 0.927);
+  padding: 0 100vw;
+}
