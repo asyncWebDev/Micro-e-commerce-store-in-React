@@ -2,14 +2,26 @@ import classes from "./Nav.module.css";
 
 import Input from "../UI/Input";
 import Button from "../UI/Button";
+import { useState, useContext } from "react";
+import SearchContext from "../../../context/search-context";
 
 export default function Nav(props) {
+  const searchCtx = useContext(SearchContext);
+  const [search, setSearch] = useState("");
+
   const onloadPageHandler = (e) => {
     const pageName = e.target.id;
     props.onLoadPage(pageName);
   };
 
-  const searchForHandler = () => {};
+  const onChangeValueHandler = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const submitSearchHandler = (e) => {
+    e.preventDefault();
+    searchCtx.onSearch(search);
+  };
 
   return (
     <ul className={classes.navbar}>
@@ -19,9 +31,9 @@ export default function Nav(props) {
         </a>
       </li>
       <li>
-        <form onSubmit={searchForHandler}>
-          <Input />
-          <Button type={"submit"} className={classes.btn}>
+        <form onSubmit={submitSearchHandler}>
+          <Input value={search} onChange={onChangeValueHandler} />
+          <Button className={classes.btn} type={"submit"}>
             <box-icon id="search" color="#d9d9d9" name="search"></box-icon>
           </Button>
         </form>

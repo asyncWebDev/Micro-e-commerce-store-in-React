@@ -5,13 +5,17 @@ import classes from "./StoreContent.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 
 export default function StoreContent(props) {
+  const [initialAssortment, setInitialAssortment] = useState([]);
   const [assortment, setAssortment] = useState([]);
   const [category, setCategory] = useState();
 
   const categoryHandler = (category) => {
     setCategory(category);
-    const test = assortment.filter((product) => product.category === category);
-    setAssortment(test);
+    const assortFilteredCategory = initialAssortment.filter(
+      (product) => product.category === category
+    );
+    setAssortment(assortFilteredCategory);
+    props.onLoadPage("main");
   };
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export default function StoreContent(props) {
       .then((response) => {
         console.log(response);
         console.log(category);
-        setAssortment(response);
+        setInitialAssortment(response);
       });
   }, []);
 

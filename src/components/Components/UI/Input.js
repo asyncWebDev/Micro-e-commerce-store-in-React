@@ -1,5 +1,5 @@
 import classes from "./Input.module.css";
 
-export default function Input() {
-  return <input className={classes.input} />;
+export default function Input(props) {
+  return <input {...props} className={classes.input} />;
 }
